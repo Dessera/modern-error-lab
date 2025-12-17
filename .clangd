@@ -1,0 +1,23 @@
+CompileFlags:
+  CompilationDatabase: build
+  BuiltinHeaders: QueryDriver
+  Remove: [ 
+    -fmodules-ts,
+    -fmodule-mapper*,
+    -fdeps-format=p1689r5
+  ]
+Diagnostics:
+  ClangTidy:
+    Add: [
+      readability-*,
+      cppcoreguidelines-*,
+      bugprone-*,
+      modernize-*,
+      performance-*,
+      misc-*
+    ]
+    Remove: [
+      cppcoreguidelines-pro-bounds-pointer-arithmetic
+    ]
+InlayHints:
+  BlockEnd: true
