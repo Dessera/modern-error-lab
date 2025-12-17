@@ -1,5 +1,5 @@
 {
-  description = "Error handling laboratory for modern cpp";
+  description = "Error handling laboratory for modern cpp.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";

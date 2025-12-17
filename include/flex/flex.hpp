@@ -42,9 +42,6 @@ using OutputStream = std::basic_ostringstream<CharT>;
 /// @brief Error trait.
 template <typename Err, typename CharT> struct Error {};
 
-/// @brief Error transform trait.
-template <typename From, typename To> struct Transform {};
-
 /// @brief Check if type is Throwable.
 template <typename Err, typename CharT = char>
 concept Throwable = requires(Err &&err, OutputStream<CharT> out) {
@@ -67,6 +64,9 @@ struct Error<std::variant<Eargs...>, CharT> {
             err);
     }
 };
+
+/// @brief Error transform trait.
+template <typename From, typename To> struct Transform {};
 
 /// @brief Check if one error can be transformed into another.
 template <typename From, typename To>

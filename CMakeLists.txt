@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.28.2)
 project(
     modern-error-lab
     VERSION 0.1.0
-    DESCRIPTION "Error handling laboratory for modern cpp"
+    DESCRIPTION "Error handling laboratory for modern cpp."
     LANGUAGES CXX)
 
 set(PNAME modern-error-lab)
@@ -27,8 +27,10 @@ target_include_directories(
               $<INSTALL_INTERFACE:include>)
 
 add_library(${TOKEN_LIBNAME} SHARED)
-set_target_properties(${TOKEN_LIBNAME} PROPERTIES OUTPUT_NAME ${TOKEN_PNAME})
+set_target_properties(${TOKEN_LIBNAME} PROPERTIES OUTPUT_NAME ${TOKEN_PNAME}
+                                                  CXX_VISIBILITY_PRESET hidden)
 target_compile_features(${TOKEN_LIBNAME} PRIVATE cxx_std_23)
+target_link_libraries(${TOKEN_LIBNAME} PUBLIC ${FLEX_LIBNAME})
 
 generate_export_header(${TOKEN_LIBNAME} EXPORT_FILE_NAME
                        ${TOKEN_PNAME}_export.h)
@@ -41,6 +43,11 @@ target_include_directories(
     ${TOKEN_LIBNAME}
     INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
               $<INSTALL_INTERFACE:include>)
+
+add_executable(${TOKEN_EXENAME})
+set_target_properties(${TOKEN_EXENAME} PROPERTIES OUTPUT_NAME ${TOKEN_PNAME})
+target_compile_features(${TOKEN_EXENAME} PRIVATE cxx_std_23)
+target_link_libraries(${TOKEN_EXENAME} PRIVATE ${TOKEN_LIBNAME})
 
 add_subdirectory(src)
 add_subdirectory(test)
