@@ -65,3 +65,6 @@ auto divide_expected(int lhs, int rhs)
 
 /// @brief Divide tester (exception version).
 auto divide_exception(int lhs, int rhs) -> int;
+
+/// @brief Divide tester (nothrow version).
+auto divide_nothrow(int lhs, int rhs) noexcept -> int;
