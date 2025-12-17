@@ -31,7 +31,7 @@ struct flex::Error<token::error::InvalidCharError, CharT> {
         -> OutputStream<CharT> & {
         out << std::basic_string_view<CharT>("Invalid character at ") << err.pos
             << std::basic_string_view<CharT>(", which value is ") << std::hex
-            << err.chr;
+            << static_cast<int>(err.chr);
         return out;
     }
 };
