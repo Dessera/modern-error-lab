@@ -21,7 +21,7 @@ jobs:
         run: doxygen Doxyfile
 
       - name: Make Product FOlder
-        run: mkdir build && cp -r docs build/
+        run: mkdir build && cp -r docs build/ && cp -r build/html/* build/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
