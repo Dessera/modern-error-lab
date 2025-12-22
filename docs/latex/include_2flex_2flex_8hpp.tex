@@ -1,0 +1,56 @@
+\doxysection{include/flex/flex.hpp File Reference}
+\hypertarget{include_2flex_2flex_8hpp}{}\label{include_2flex_2flex_8hpp}\index{include/flex/flex.hpp@{include/flex/flex.hpp}}
+
+
+Flex\+: Simple error trait definition.  
+
+
+{\ttfamily \#include $<$concepts$>$}\newline
+{\ttfamily \#include $<$expected$>$}\newline
+{\ttfamily \#include $<$format$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$variant$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structflex_1_1detail_1_1HasType}{flex\+::detail\+::\+Has\+Type$<$ T, Args $>$}}
+\begin{DoxyCompactList}\small\item\em Helper for inspecting if type parameter pack contains given type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structflex_1_1detail_1_1HasType_3_01T_00_01Arg_00_01Args_8_8_8_01_4}{flex\+::detail\+::\+Has\+Type$<$ T, Arg, Args... $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1detail_1_1HasType_3_01T_01_4}{flex\+::detail\+::\+Has\+Type$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1Error}{flex\+::\+Error$<$ Err, Char\+T $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structflex_1_1Error}{Error} trait. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structflex_1_1Error_3_01std_1_1variant_3_01Eargs_8_8_8_01_4_00_01CharT_01_4}{flex\+::\+Error$<$ std\+::variant$<$ Eargs... $>$, Char\+T $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1Transform}{flex\+::\+Transform$<$ From, To $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structflex_1_1Error}{Error} transform trait. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structflex_1_1Transform_3_01Err_00_01Err_01_4}{flex\+::\+Transform$<$ Err, Err $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1Transform_3_01From_00_01std_1_1variant_3_01Tos_8_8_8_01_4_01_4}{flex\+::\+Transform$<$ From, std\+::variant$<$ Tos... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structstd_1_1formatter_3_01Err_00_01CharT_01_4}{std\+::formatter$<$ Err, Char\+T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Concepts}
+\begin{DoxyCompactItemize}
+\item 
+concept \mbox{\hyperlink{conceptflex_1_1Throwable}{flex\+::\+Throwable}}
+\begin{DoxyCompactList}\small\item\em Check if type is Throwable. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{conceptflex_1_1Transformable}{flex\+::\+Transformable}}
+\begin{DoxyCompactList}\small\item\em Check if one error can be transformed to another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{include_2flex_2flex_8hpp_a114851f8f6f198de9d311ffbdb5c7506}\label{include_2flex_2flex_8hpp_a114851f8f6f198de9d311ffbdb5c7506} 
+{\footnotesize template$<$typename... Eargs$>$ }\\using {\bfseries flex\+::\+Error\+Group} = std\+::variant$<$Eargs...$>$
+\begin{DoxyCompactList}\small\item\em Helper for create a group of error. \end{DoxyCompactList}\item 
+\Hypertarget{include_2flex_2flex_8hpp_adb6a45cf0e4bb030bcbb93758debba5c}\label{include_2flex_2flex_8hpp_adb6a45cf0e4bb030bcbb93758debba5c} 
+{\footnotesize template$<$typename T, typename E$>$ }\\using {\bfseries flex\+::\+Result} = std\+::expected$<$T, E$>$
+\begin{DoxyCompactList}\small\item\em Helper for create a result type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Flex\+: Simple error trait definition. 
+

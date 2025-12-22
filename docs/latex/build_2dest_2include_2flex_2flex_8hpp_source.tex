@@ -1,0 +1,89 @@
+\doxysection{flex.\+hpp}
+\hypertarget{build_2dest_2include_2flex_2flex_8hpp_source}{}\label{build_2dest_2include_2flex_2flex_8hpp_source}\index{build/dest/include/flex/flex.hpp@{build/dest/include/flex/flex.hpp}}
+\mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }flex\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }detail\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structflex_1_1detail_1_1HasType}{HasType}}\ \{\};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Arg,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structflex_1_1detail_1_1HasType}{HasType}}<T,\ Arg,\ Args...>\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ VALUE\ =}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::is\_same\_v<T,\ Arg>\ ||\ \mbox{\hyperlink{structflex_1_1detail_1_1HasType}{HasType}}<T,\ Args...>::VALUE;}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structflex_1_1detail_1_1HasType}{HasType}}<T>\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ VALUE\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00032\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_af09766e7989e497b1961d78fe9568b49}{HasTypeV}}\ =\ \mbox{\hyperlink{structflex_1_1detail_1_1HasType}{HasType}}<T,\ Args...>::VALUE;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}\ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ CharT>\ \textcolor{keyword}{using\ }\mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a34a7009fd968a535008c9c6f1ee4841f}{OutputStream}}\ =\ std::basic\_ostringstream<CharT>;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Err,\ \textcolor{keyword}{typename}\ CharT>}
+\DoxyCodeLine{00041\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a38572d78ff537fdc9542941d58ea1a29}{output}}(\textcolor{keyword}{const}\ Err\ \&\ \textcolor{comment}{/*err*/},\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a34a7009fd968a535008c9c6f1ee4841f}{OutputStream<CharT>}}\ \&\ \textcolor{comment}{/*out*/})}
+\DoxyCodeLine{00042\ \ \ \ \ -\/>\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a34a7009fd968a535008c9c6f1ee4841f}{OutputStream<CharT>}}\ \&\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static\_assert}(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Err\ does\ not\ implemented\ output"{}});}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ From,\ \textcolor{keyword}{typename}\ To>\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a269649857b791e5f3970d2e27f9f298e}{transform}}(From\ \&\&\ \textcolor{comment}{/*err*/})\ -\/>\ To\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static\_assert}(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}'From'\ does\ not\ implemented\ transformer\ to\ 'To'"{}});}
+\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Err,\ \textcolor{keyword}{typename}\ CharT>}
+\DoxyCodeLine{00053\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptflex_1_1Error}{Error}}\ =\ \textcolor{keyword}{requires}(Err\ \&\&err,\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a34a7009fd968a535008c9c6f1ee4841f}{OutputStream<CharT>}}\ \&out)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \{\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a38572d78ff537fdc9542941d58ea1a29}{output<Err,\ CharT>}}(err,\ out)\ \}\ -\/>\ std::same\_as<OutputStream<CharT>\ \&>;}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ From,\ \textcolor{keyword}{typename}\ To>}
+\DoxyCodeLine{00059\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptflex_1_1Transformable}{Transformable}}\ =\ \textcolor{keyword}{requires}(From\ \&\&from)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \{\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a269649857b791e5f3970d2e27f9f298e}{transform<From,\ To>}}(from)\ \}\ -\/>\ std::same\_as<To>;}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Eargs,\ \textcolor{keyword}{typename}\ CharT>}
+\DoxyCodeLine{00064\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a38572d78ff537fdc9542941d58ea1a29}{output}}(\textcolor{keyword}{const}\ std::variant<Eargs...>\ \&err,\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a34a7009fd968a535008c9c6f1ee4841f}{OutputStream<CharT>}}\ \&out)}
+\DoxyCodeLine{00065\ \ \ \ \ -\/>\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a34a7009fd968a535008c9c6f1ee4841f}{OutputStream<CharT>}}\ \&\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit([\&](\textcolor{keyword}{auto}\ \&\&err)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a38572d78ff537fdc9542941d58ea1a29}{output}}(err,\ out);\ \},\ err);}
+\DoxyCodeLine{00067\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Err>\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a269649857b791e5f3970d2e27f9f298e}{transform}}(Err\ \&\&from)\ -\/>\ Err\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{return}\ std::forward<Err>(from);}
+\DoxyCodeLine{00071\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ From,\ \textcolor{keyword}{typename}...\ Tos>}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{requires}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_af09766e7989e497b1961d78fe9568b49}{detail::HasTypeV}}<From,\ Tos...>}
+\DoxyCodeLine{00075\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a269649857b791e5f3970d2e27f9f298e}{transform}}(From\ \&\&err)\ -\/>\ std::variant<Tos...>\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ std::forward<From>(err);}
+\DoxyCodeLine{00077\ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \}\ \textcolor{comment}{//\ namespace\ flex}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Err,\ \textcolor{keyword}{typename}\ CharT>}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{requires}\ \mbox{\hyperlink{conceptflex_1_1Error}{flex::Error<Err,\ CharT>}}}
+\DoxyCodeLine{00083\ \textcolor{keyword}{struct\ }std::formatter<Err,\ CharT>\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ parse(\textcolor{keyword}{auto}\ \&ctx)\ \{\ \textcolor{keywordflow}{return}\ ctx.begin();\ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ format(\textcolor{keyword}{const}\ Err\ \&err,\ \textcolor{keyword}{auto}\ \&ctx)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ out\ =\ OutputStream<CharT>();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{build_2dest_2include_2flex_2flex_8hpp_a38572d78ff537fdc9542941d58ea1a29}{flex::output}}(err,\ out);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::ranges::copy(std::move(out).str(),\ ctx.out()).out;}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \};}
+
+\end{DoxyCode}
