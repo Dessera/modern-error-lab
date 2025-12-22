@@ -1,0 +1,68 @@
+\doxysection{test\+\_\+flex\+\_\+perf.\+hpp}
+\hypertarget{test__flex__perf_8hpp_source}{}\label{test__flex__perf_8hpp_source}\index{test/test\_flex\_perf.hpp@{test/test\_flex\_perf.hpp}}
+\mbox{\hyperlink{test__flex__perf_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <exception>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{flex_8hpp}{flex/flex.hpp}}>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structExpectedDivideByZeroError}{ExpectedDivideByZeroError}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ dividend;}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ CharT>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structflex_1_1Error}{flex::Error}}<\mbox{\hyperlink{structExpectedDivideByZeroError}{ExpectedDivideByZeroError}},\ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{CharT}}>\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{static}\ \textcolor{keyword}{auto}\ output(\textcolor{keyword}{const}\ \mbox{\hyperlink{structExpectedDivideByZeroError}{ExpectedDivideByZeroError}}\ \&\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{err}},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{OutputStream<CharT>}}\ \&\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{out}})}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ -\/>\ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{OutputStream<CharT>}}\ \&\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{out\ <<\ std::basic\_string\_view<CharT>}}(\textcolor{stringliteral}{"{}Divide\ number\ "{}})\ <<\ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{err}}.dividend}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::basic\_string\_view<CharT>(\textcolor{stringliteral}{"{}\ by\ zero"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{out}};}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{using\ }\mbox{\hyperlink{test__flex__perf_8hpp_a354672773be7bc5efd33eb7f8f112332}{ExpectedArithmeticError}}\ =\ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{flex::ErrorGroup<ExpectedDivideByZeroError>}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classExceptionDivideByZeroError}{ExceptionDivideByZeroError}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \_dividend;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{mutable}\ std::string\ \_cache;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classExceptionDivideByZeroError}{ExceptionDivideByZeroError}}(\textcolor{keywordtype}{int}\ dividend);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{auto}\ what()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ -\/>\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ D\ =\ std::chrono::milliseconds,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ Clock\ =\ std::chrono::high\_resolution\_clock>}
+\DoxyCodeLine{00044\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{test__flex__perf_8hpp_a8fb4e3e118517e40d4bb84de2ef502ce}{record}}(\textcolor{keyword}{auto}\ \&\&func,\ \textcolor{keyword}{auto}\ \&\&...args)\ -\/>\ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{using\ }Ret\ =\ std::invoke\_result\_t<\textcolor{keyword}{decltype}(func),\ \textcolor{keyword}{decltype}(args)...>;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{auto}\ start\ =\ Clock::now();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<Ret,\ void>)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::forward<decltype(func)>(func)(}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ std::forward<decltype(args)>(args)...);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_tuple(}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::duration\_cast<D>(Clock::now()\ -\/\ start));}
+\DoxyCodeLine{00053\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ ret\ =\ std::forward<decltype(func)>(func)(}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ std::forward<decltype(args)>(args)...);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_tuple(}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::duration\_cast<D>(Clock::now()\ -\/\ start),}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ std::move(ret));}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{test__flex__perf_8hpp_a0898466912177d4ec37dcfeafe403595}{divide\_expected}}(\textcolor{keywordtype}{int}\ lhs,\ \textcolor{keywordtype}{int}\ rhs)}
+\DoxyCodeLine{00064\ \ \ \ \ -\/>\ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{flex::Result<int,\ ExpectedArithmeticError>}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{test__flex__perf_8hpp_a65ed4611ae4bafa2e56177b1931f11c6}{divide\_exception}}(\textcolor{keywordtype}{int}\ lhs,\ \textcolor{keywordtype}{int}\ rhs)\ -\/>\ int;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{test__flex__perf_8hpp_a042223a9a2062afcf38a5137fa0e1d3a}{divide\_nothrow}}(\textcolor{keywordtype}{int}\ lhs,\ \textcolor{keywordtype}{int}\ rhs)\ \textcolor{keyword}{noexcept}\ -\/>\ int;}
+
+\end{DoxyCode}

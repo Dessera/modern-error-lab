@@ -1,0 +1,35 @@
+\doxysection{token\+::Tokenizer Class Reference}
+\hypertarget{classtoken_1_1Tokenizer}{}\label{classtoken_1_1Tokenizer}\index{token::Tokenizer@{token::Tokenizer}}
+
+
+Simple tokenizer which split string into words and numbers.  
+
+
+
+
+{\ttfamily \#include $<$token.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classtoken_1_1Tokenizer_a8dec6574e597f45ec83792638f7e18b6}\label{classtoken_1_1Tokenizer_a8dec6574e597f45ec83792638f7e18b6} 
+{\bfseries Tokenizer} (std\+::string\+\_\+view input)
+\item 
+\Hypertarget{classtoken_1_1Tokenizer_a1b50761c4778cb17fcf8a735cc338fa9}\label{classtoken_1_1Tokenizer_a1b50761c4778cb17fcf8a735cc338fa9} 
+auto {\bfseries next} () -\/$>$ \mbox{\hyperlink{error_8hpp_a6bbaa0778467b5dd010b099bb7f2c6d5}{error\+::\+Token\+Result}}$<$ \mbox{\hyperlink{structtoken_1_1Token}{Token}} $>$
+\begin{DoxyCompactList}\small\item\em Get next token. \end{DoxyCompactList}\item 
+\Hypertarget{classtoken_1_1Tokenizer_a1130c3c21722d036f2f7269c6b22eb3b}\label{classtoken_1_1Tokenizer_a1130c3c21722d036f2f7269c6b22eb3b} 
+auto {\bfseries pos} () const -\/$>$ std\+::string\+\_\+view\+::const\+\_\+iterator
+\begin{DoxyCompactList}\small\item\em Get the current position of the tokenizer. \end{DoxyCompactList}\item 
+\Hypertarget{classtoken_1_1Tokenizer_a258a1153789e87252f3e812ab2184489}\label{classtoken_1_1Tokenizer_a258a1153789e87252f3e812ab2184489} 
+auto {\bfseries spos} () const -\/$>$ std\+::size\+\_\+t
+\begin{DoxyCompactList}\small\item\em Get the current position of the tokenizer as an index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple tokenizer which split string into words and numbers. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/token/\mbox{\hyperlink{token_8hpp}{token.\+hpp}}\item 
+src/token/token.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,65 @@
+\doxysection{include/flex/flex.hpp File Reference}
+\hypertarget{flex_8hpp}{}\label{flex_8hpp}\index{include/flex/flex.hpp@{include/flex/flex.hpp}}
+
+
+Flex\+: Simple error trait definition.  
+
+
+{\ttfamily \#include $<$concepts$>$}\newline
+{\ttfamily \#include $<$expected$>$}\newline
+{\ttfamily \#include $<$format$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$variant$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structflex_1_1detail_1_1HasType}{flex\+::detail\+::\+Has\+Type$<$ T, Args $>$}}
+\begin{DoxyCompactList}\small\item\em Helper for inspecting if type parameter pack contains given type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structflex_1_1detail_1_1HasType_3_01T_00_01Arg_00_01Args_8_8_8_01_4}{flex\+::detail\+::\+Has\+Type$<$ T, Arg, Args... $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1detail_1_1HasType_3_01T_01_4}{flex\+::detail\+::\+Has\+Type$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1Error}{flex\+::\+Error$<$ Err, Char\+T $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structflex_1_1Error}{Error} trait. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structflex_1_1Error_3_01std_1_1variant_3_01Eargs_8_8_8_01_4_00_01CharT_01_4}{flex\+::\+Error$<$ std\+::variant$<$ Eargs... $>$, Char\+T $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1Transform}{flex\+::\+Transform$<$ From, To $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structflex_1_1Error}{Error} transform trait. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structflex_1_1Transform_3_01Err_00_01Err_01_4}{flex\+::\+Transform$<$ Err, Err $>$}}
+\item 
+struct \mbox{\hyperlink{structflex_1_1Transform_3_01From_00_01std_1_1variant_3_01Tos_8_8_8_01_4_01_4}{flex\+::\+Transform$<$ From, std\+::variant$<$ Tos... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structstd_1_1formatter_3_01Err_00_01CharT_01_4}{std\+::formatter$<$ Err, Char\+T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Concepts}
+\begin{DoxyCompactItemize}
+\item 
+concept \mbox{\hyperlink{conceptflex_1_1Throwable}{flex\+::\+Throwable}}
+\begin{DoxyCompactList}\small\item\em Check if type is Throwable. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{conceptflex_1_1Transformable}{flex\+::\+Transformable}}
+\begin{DoxyCompactList}\small\item\em Check if one error can be transformed into another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}\label{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2} 
+{\footnotesize template$<$\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{typename}} \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{CharT}}  = char$>$ }\\\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{using}} {\bfseries flex\+::\+Output\+Stream} = std\+::basic\+\_\+ostringstream$<$ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{CharT}} $>$
+\begin{DoxyCompactList}\small\item\em Output stream for error. \end{DoxyCompactList}\item 
+\Hypertarget{flex_8hpp_a6f78592cc99ed7a3362348319d14f799}\label{flex_8hpp_a6f78592cc99ed7a3362348319d14f799} 
+{\footnotesize template$<$typename... Eargs$>$ }\\\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{using}} {\bfseries flex\+::\+Error\+Group} = std\+::variant$<$ Eargs... $>$
+\begin{DoxyCompactList}\small\item\em Helper for create a group of error. \end{DoxyCompactList}\item 
+\Hypertarget{flex_8hpp_a0da03b39135876977f46c9bfde5a4be3}\label{flex_8hpp_a0da03b39135876977f46c9bfde5a4be3} 
+{\footnotesize template$<$\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{typename}} \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{T}} , \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{typename}} \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{E}} $>$ }\\\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{using}} {\bfseries flex\+::\+Result} = std\+::expected$<$ \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{T}}, \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{E}} $>$
+\begin{DoxyCompactList}\small\item\em Helper for create a result type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{flex_8hpp_af09766e7989e497b1961d78fe9568b49}\label{flex_8hpp_af09766e7989e497b1961d78fe9568b49} 
+{\footnotesize template$<$\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{typename}} \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{T}} , typename... Args$>$ }\\\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{constexpr}} \mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{bool}} {\bfseries flex\+::detail\+::\+Has\+TypeV} = \mbox{\hyperlink{structflex_1_1detail_1_1HasType}{Has\+Type}}$<$\mbox{\hyperlink{flex_8hpp_aa47da71ed3743e9bb242f1fe89d80ac2}{T}}, Args...$>$\+::\+VALUE
+\begin{DoxyCompactList}\small\item\em Helper for inspecting if type parameter pack contains given type (variable version). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Flex\+: Simple error trait definition. 
+

@@ -1,0 +1,26 @@
+\doxysection{flex\+::Throwable Concept Reference}
+\hypertarget{conceptflex_1_1Throwable}{}\label{conceptflex_1_1Throwable}\index{flex::Throwable@{flex::Throwable}}
+
+
+Check if type is Throwable.  
+
+
+
+
+{\ttfamily \#include $<$flex.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Err,\ \textcolor{keyword}{typename}\ CharT\ \textcolor{keywordtype}{char}>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptflex_1_1Throwable}{flex::Throwable}}\ =\ \ \textcolor{keyword}{requires}(Err\ \&\&err,\ OutputStream<CharT>\ out)\ \{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Error<Err,\ CharT>::output(err,\ out)}
+\DoxyCodeLine{\ \ \ \ \}\ -\/>\ std::same\_as<OutputStream<CharT>\ \&>;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Check if type is Throwable. 

@@ -1,0 +1,32 @@
+\doxysection{src/token/main.hpp File Reference}
+\hypertarget{main_8hpp}{}\label{main_8hpp}\index{src/token/main.hpp@{src/token/main.hpp}}
+
+
+Tokenizer main utils.  
+
+
+{\ttfamily \#include $<$flex/flex.\+hpp$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$string\+\_\+view$>$}\newline
+{\ttfamily \#include $<$token/error.\+hpp$>$}\newline
+{\ttfamily \#include $<$token/token.\+hpp$>$}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8hpp_ad1281f84f8154eb8e699e991f9ed8333}\label{main_8hpp_ad1281f84f8154eb8e699e991f9ed8333} 
+using {\bfseries App\+Error} = \mbox{\hyperlink{flex_8hpp_a6f78592cc99ed7a3362348319d14f799}{flex\+::\+Error\+Group}}$<$ \mbox{\hyperlink{error_8hpp_a5ee92d7cd5e35ca44daa699bb9d832fd}{token\+::error\+::\+Token\+Error}} $>$
+\begin{DoxyCompactList}\small\item\em Application error type. \end{DoxyCompactList}\item 
+\Hypertarget{main_8hpp_ae94ba6812eb663d93bb8c30693bf89a8}\label{main_8hpp_ae94ba6812eb663d93bb8c30693bf89a8} 
+{\footnotesize template$<$typename T $>$ }\\using {\bfseries App\+Result} = \mbox{\hyperlink{flex_8hpp_a0da03b39135876977f46c9bfde5a4be3}{flex\+::\+Result}}$<$ T, \mbox{\hyperlink{main_8hpp_ad1281f84f8154eb8e699e991f9ed8333}{App\+Error}} $>$
+\begin{DoxyCompactList}\small\item\em Application result type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8hpp_a2a46aa26dc4d1b8d7c6c07df6a298217}\label{main_8hpp_a2a46aa26dc4d1b8d7c6c07df6a298217} 
+auto {\bfseries tokenize} (std\+::string\+\_\+view input, std\+::ostream \&out) -\/$>$ \mbox{\hyperlink{main_8hpp_ae94ba6812eb663d93bb8c30693bf89a8}{App\+Result}}$<$ void $>$
+\begin{DoxyCompactList}\small\item\em Get tokenize summay for a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tokenizer main utils. 
+
