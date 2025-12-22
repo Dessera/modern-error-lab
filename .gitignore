@@ -1,11 +1,11 @@
 build
 *.cache
 
-subprojects/*
-!subprojects/*.wrap
-
 .direnv
 result
 result-*
 .vscode
 .envrc
+
+docs/html
+docs/latex
