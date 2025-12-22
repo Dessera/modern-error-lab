@@ -39,6 +39,7 @@
                     nixd
                     nixfmt-rfc-style
                     cmake-format
+                    doxygen
                   ])
                   ++ [
                     clang-tools

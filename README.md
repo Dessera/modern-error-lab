@@ -26,3 +26,4 @@ ninja
 ## Testing
 
 - `Flex` performance test: `./build/test/test_flex_perf`
+- Simple `Tokenizer` based on `Flex`: `./build/token`

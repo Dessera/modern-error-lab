@@ -26,3 +26,4 @@ ninja
 ## 测试
 
 - `Flex`性能测试：`./build/test/test_flex_perf`
+- 基于'Flex'的简易`Tokenizer`：`./build/token`
